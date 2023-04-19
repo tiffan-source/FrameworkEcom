@@ -1,0 +1,12 @@
+{% block body %}
+    <h1>Ajoutez une categorie</h1>
+
+    <form method="post" action="{{path(routePrefix ~ '.create', {id : item.id})}}">
+        {{ field('name', item.name, 'Titre de la categorie') }}
+        {{csrf_input()}}
+
+        <div>
+            <button type="submit">Soumettre</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '@admin/layout.twig' %}
+
+{% block body %}
+
+    <h1>Admin</h1>
+    <ul>
+        {% for item in items %}
+            <li>
+                <span>{{item.name}}</span>
+                <a href="{{path(routePrefix ~ '.edit', {id : item.id})}}">Editer</a>
+                <form method="POST" action="{{path(routePrefix ~ '.delete', {id : item.id})}}">
+                    <input type="hidden" name="_METHOD" value="DELETE">
+                    {{csrf_input()}}
+                    <button type="submit">Delete</button>
+                </form>               
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ paginate(items, routePrefix ~ '.index') }}
+
+{% endblock %}

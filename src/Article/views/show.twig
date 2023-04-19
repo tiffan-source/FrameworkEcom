@@ -1,0 +1,5 @@
+<h1>Un article {{article.name}}</h1>
+<h2>
+<a href="{{path('categorie.show', {name : article.categorie_name})}}">{{article.categorie_name}}</a>
+</h2>
+<p>{{article.description | excerpt}}</p>

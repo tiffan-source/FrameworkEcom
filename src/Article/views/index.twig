@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    <h1>Bienvenue</h1>
+    <ul>
+        {% for article in articles %}
+            <li> <a href="{{path('article.show', {title : article.name, id : article.id})}}">{{article.name}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if categorie %}
+            {{ paginate(articles, 'categorie.show', {'name' : categorie.name}) }}            
+        {% else %}
+            {{ paginate(articles, 'article.index') }}            
+        {% endif %}
+    </div>
+
+    <ul>
+        {% for categorie in categories %}
+            <li>
+                <a href="{{path('categorie.show', {name : categorie.name})}}">{{categorie.name}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

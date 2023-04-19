@@ -1,0 +1,16 @@
+{% block body %}
+    <h1>Editer l'article {{item.name}}</h1>
+
+    <form method="post" action="{{path(routePrefix ~ '.edit', {id : item.id})}}" enctype="multipart/form-data">
+
+        {{ field('name', item.name, 'Titre de l\'article') }}
+        {{ field('categorie_id', item.categorie_id, 'Categorie de l\'article', {options : categories}) }}
+        {{ field('description', item.description, 'Description de l\'article') }}
+        {{ field('quantity', item.quantity, 'Quantite de l\'article') }}
+        {{ field('image', null, 'Images de l\'article', {type : 'file'}) }}
+        {{csrf_input()}}
+        <div>
+            <button type="submit">Soumettre</button>
+        </div>
+    </form>
+{% endblock %}
